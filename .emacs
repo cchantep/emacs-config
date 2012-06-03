@@ -71,12 +71,15 @@
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(defun my-scala-reformat ()
-  (save-excursion
-    (ensime-format-source)
-  nil))
+;; Scala - Ensime integration
+(defun my-scala-save-hook ()
+  (if (and (ensime-connected-p)
+           (buffer-modified-p))
+      (ensime-format-source))
+  nil)
 
 (add-hook 'scala-mode-hook
-          '(lambda ()
-             (make-local-hook 'write-contents-hooks)
-             (add-hook 'write-contents-hooks 'my-scala-reformat)))
+          (lambda()
+            (add-hook 'local-write-file-hooks
+                      '(lambda()
+                         (save-excursion (my-scala-save-hook))))))
