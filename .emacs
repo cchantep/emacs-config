@@ -70,3 +70,13 @@
 (require 'ensime)
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(defun my-scala-reformat ()
+  (save-excursion
+    (ensime-format-source)
+  nil))
+
+(add-hook 'scala-mode-hook
+          '(lambda ()
+             (make-local-hook 'write-contents-hooks)
+             (add-hook 'write-contents-hooks 'my-scala-reformat)))
