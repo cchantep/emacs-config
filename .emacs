@@ -40,7 +40,7 @@
   (setq mac-option-modifier 'nil))
 
 ;; Common load path
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs-23/site"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site"))
 
 ;; Setup Emacs to run bash as its primary shell.
 (setq shell-file-name "bash")
@@ -50,10 +50,10 @@
 (setq explicit-sh-args '("-login" "-i"))
 
 ;; JDEE
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs-23/site/jdee/lisp"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs-23/site/elib"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/jdee/lisp"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/elib"))
 (add-to-list 'load-path 
-             (expand-file-name "~/Library/Emacs-23/site/cedet/common"))
+             (expand-file-name "~/Library/Emacs/site/cedet/common"))
 
 (require 'cedet)
 (require 'jde)
@@ -63,10 +63,10 @@
 (require 'javascript-mode)
 
 ;; Scala
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs-23/site/scala"))
-;(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime/elisp"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime/elisp"))
 
 (require 'scala-mode-auto)
-;(require 'ensime)
+(require 'ensime)
 
-;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
