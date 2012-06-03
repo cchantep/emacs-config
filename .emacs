@@ -11,8 +11,18 @@
 
 ;; Screen/display preferences
 (set-frame-size (selected-frame) 80 50)
-(setq visible-bell t) ; Turn noisy bell into a visible one
-;(setq ring-bell-function (lambda () (message "*beep*")))
+
+;; Custom visible bell
+(setq visible-bell nil)
+(setq ring-bell-function 
+      (lambda () 
+        (set 'tmpc (face-background 'fringe))
+        (set-face-background 'fringe "Orchid")
+        (redisplay t)
+        (run-at-time 
+         "500 msec" nil 
+         '(lambda() (set-face-background 'fringe tmpc)))
+))
 
 (message (concat "Salut à toi, " (user-full-name))) 
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b")) 
