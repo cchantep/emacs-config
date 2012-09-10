@@ -62,6 +62,9 @@
 ;; JavaScript
 (require 'javascript-mode)
 
+;; Markdown
+(require 'markdown-mode)
+
 ;; Scala
 (add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala"))
 (add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime/elisp"))
@@ -69,6 +72,7 @@
 (require 'scala-mode-auto)
 (require 'ensime)
 
+(defconst scala-rigid-indent t)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; Scala - Ensime integration
