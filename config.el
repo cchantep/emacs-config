@@ -1,4 +1,4 @@
-;; Set the debug option to enable a backtrace when a
+t;; Set the debug option to enable a backtrace when a
 ;; problem occurs.
 (setq debug-on-error t)
 
@@ -11,6 +11,7 @@
 
 ;; Screen/display preferences
 (set-frame-size (selected-frame) 80 50)
+(tool-bar-mode -1)
 
 ;; Custom visible bell
 (setq visible-bell nil)
@@ -50,12 +51,12 @@
 (setq explicit-sh-args '("-login" "-i"))
 
 ;; JDEE
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/jdee/lisp"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/elib"))
-(add-to-list 'load-path 
-             (expand-file-name "~/Library/Emacs/site/cedet/common"))
+(load-file "~/Library/Emacs/site/cedet-1.1/common/cedet.el")
+;(add-to-list 'load-path 
+;             (expand-file-name "~/Library/Emacs/site/cedet-1.1/common"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/jdee-2.4.0.1/lisp"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/elib-1.0"))
 
-(require 'cedet)
 (require 'jde)
 ;(global-set-key "\C-c\C-vg" 'jde-gen-get-set) ; get/set generator shortcut
 
@@ -66,8 +67,8 @@
 (require 'markdown-mode)
 
 ;; Scala
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime/elisp"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala-20120603"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime_2.9.2-RC1-0.9.3.RC4/elisp"))
 
 (require 'scala-mode-auto)
 (require 'ensime)
