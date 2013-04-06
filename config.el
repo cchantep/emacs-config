@@ -10,7 +10,7 @@ t;; Set the debug option to enable a backtrace when a
 (transient-mark-mode t)
 
 ;; Screen/display preferences
-(set-frame-size (selected-frame) 80 50)
+(set-frame-size (selected-frame) 80 54)
 (tool-bar-mode -1)
 
 ;; Custom visible bell
@@ -51,14 +51,14 @@ t;; Set the debug option to enable a backtrace when a
 (setq explicit-sh-args '("-login" "-i"))
 
 ;; JDEE
-(load-file "~/Library/Emacs/site/cedet-1.1/common/cedet.el")
-;(add-to-list 'load-path 
-;             (expand-file-name "~/Library/Emacs/site/cedet-1.1/common"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/jdee-2.4.0.1/lisp"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/elib-1.0"))
+;(load-file "~/Library/Emacs/site/cedet-1.1/common/cedet.el")
+;;(add-to-list 'load-path 
+;;             (expand-file-name "~/Library/Emacs/site/cedet-1.1/common"))
+;(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/jdee-2.4.0.1/lisp"))
+;(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/elib-1.0"))
 
-(require 'jde)
-;(global-set-key "\C-c\C-vg" 'jde-gen-get-set) ; get/set generator shortcut
+;(require 'jde)
+;;(global-set-key "\C-c\C-vg" 'jde-gen-get-set) ; get/set generator shortcut
 
 ;; JavaScript
 (require 'javascript-mode)
@@ -67,10 +67,10 @@ t;; Set the debug option to enable a backtrace when a
 (require 'markdown-mode)
 
 ;; Scala
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala-20120603"))
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala-mode2-20130406"))
 (add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime_2.9.2-RC1-0.9.3.RC4/elisp"))
 
-(require 'scala-mode-auto)
+(require 'scala-mode2)
 (require 'ensime)
 
 (defconst scala-rigid-indent t)
