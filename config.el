@@ -77,3 +77,14 @@
             (add-hook 'local-write-file-hooks
                       '(lambda()
                          (save-excursion (my-scala-save-hook))))))
+
+;; Haskell
+(add-to-list 'load-path 
+             (expand-file-name "~/Library/Emacs/site/haskell-mode-2.8.0"))
+(require 'haskell-mode)
+(setq auto-mode-alist (append auto-mode-alist
+                              '(("\\.hs\\'" . turn-on-haskell-indent))))
+(autoload 'turn-on-haskell-indent "hindent" "Indentation mode for Haskell" t)
+
+;; Ocaml
+(load (expand-file-name "~/Library/Emacs/site/tuareg/tuareg-site-file.elc"))
