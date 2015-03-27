@@ -88,3 +88,8 @@
 
 ;; Ocaml
 (load (expand-file-name "~/Library/Emacs/site/tuareg/tuareg-site-file.elc"))
+
+;; Clojure
+(add-to-list 'load-path 
+             (expand-file-name "~/Library/Emacs/site/clojure-mode"))
+(require 'clojure-mode)
