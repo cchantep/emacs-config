@@ -51,6 +51,7 @@
 
 ;; JavaScript
 (require 'javascript-mode)
+(setq javascript-indent-level 2)
 
 ;; Markdown
 (require 'markdown-mode)
@@ -90,6 +91,9 @@
 (load (expand-file-name "~/Library/Emacs/site/tuareg/tuareg-site-file.elc"))
 
 ;; Clojure
-(add-to-list 'load-path 
-             (expand-file-name "~/Library/Emacs/site/clojure-mode"))
-(require 'clojure-mode)
+;;(add-to-list 'load-path 
+;;             (expand-file-name "~/Library/Emacs/site/clojure-mode"))
+;;(require 'clojure-mode)
+
+;; Go
+(load (expand-file-name "~/Library/Emacs/site/go-mode/go-mode-autoloads.el"))
