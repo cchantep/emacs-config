@@ -9,7 +9,7 @@
 (transient-mark-mode t)
 
 ;; Screen/display preferences
-(set-frame-size (selected-frame) 80 54)
+(set-frame-size (selected-frame) 92 62)
 (tool-bar-mode -1)
 
 ;; Custom visible bell
@@ -54,30 +54,32 @@
 (setq javascript-indent-level 2)
 
 ;; Markdown
-(require 'markdown-mode)
+(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/yaml-mode/"))
+(require 'yaml-mode)
 
 ;; Scala
 (add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/scala-mode2-20130406"))
-(add-to-list 'load-path (expand-file-name "~/Library/Emacs/site/ensime_2.10.0-0.9.8.9/elisp"))
 
 (require 'scala-mode2)
-(require 'ensime)
+
+;; Ensime dependencies
+(load (expand-file-name "~/Library/Emacs/site/popup-el-0.5.9/popup.el"))
+(load (expand-file-name "~/Library/Emacs/site/company-mode-0.10.1/company.el"))
+
+(use-package ensime-mode
+  :ensure nil
+  :load-path "~/Library/Emacs/site/ensime-tng-3.0.15/lisp/"
+  :commands ensime-mode
+  :bind
+  (:map ensime-mode-map
+        ("M-." . ensime-jump-to-definition)
+        ("C-c C-i t" . ensime-type-at-point)
+        ("C-c C-i s" . ensime-symbol-at-point)
+        ("C-c C-r i" . ensime-import-symbol-at-point)))
+
+(add-hook 'scala-mode-hook #'ensime-mode)
 
 ;(defconst scala-rigid-indent t)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-;; Scala - Ensime integration
-(defun my-scala-save-hook ()
-  (if (and (ensime-connected-p)
-           (buffer-modified-p))
-      (ensime-format-source))
-  nil)
-
-(add-hook 'scala-mode-hook
-          (lambda()
-            (add-hook 'local-write-file-hooks
-                      '(lambda()
-                         (save-excursion (my-scala-save-hook))))))
 
 ;; Haskell
 (add-to-list 'load-path 
@@ -87,13 +89,14 @@
                               '(("\\.hs\\'" . turn-on-haskell-indent))))
 (autoload 'turn-on-haskell-indent "hindent" "Indentation mode for Haskell" t)
 
-;; Ocaml
-(load (expand-file-name "~/Library/Emacs/site/tuareg/tuareg-site-file.elc"))
-
-;; Clojure
-;;(add-to-list 'load-path 
-;;             (expand-file-name "~/Library/Emacs/site/clojure-mode"))
-;;(require 'clojure-mode)
-
 ;; Go
 (load (expand-file-name "~/Library/Emacs/site/go-mode/go-mode-autoloads.el"))
+
+;; Rust
+(load (expand-file-name "~/Library/Emacs/site/rust-mode-0.4.0/rust-mode.el"))
+
+;; Typescript
+(load (expand-file-name "~/Library/Emacs/site/typescript/typescript-mode.elc"))
+(setq typescript-indent-level 2)
+
+(add-to-list 'auto-mode-alist (cons "\\.svelte\\'" 'typescript-mode))
