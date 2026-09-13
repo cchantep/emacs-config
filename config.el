@@ -32,8 +32,10 @@
 (set-cursor-color "Orchid")
 ;(set-cursor-color "HotPink") ;
 (set-face-background 'region "LightBlue")
-(set-face-background 'default "White")
-(set-face-foreground 'default "Black")
+(set-face-foreground 'region "DarkBlue")
+
+(set-face-background 'default "Black")
+(set-face-foreground 'default "White")
 
 ;; Key bindings
 (when (eq system-type 'darwin)
@@ -63,21 +65,21 @@
 (require 'scala-mode2)
 
 ;; Ensime dependencies
-(load (expand-file-name "~/Library/Emacs/site/popup-el-0.5.9/popup.el"))
-(load (expand-file-name "~/Library/Emacs/site/company-mode-0.10.1/company.el"))
+;(load (expand-file-name "~/Library/Emacs/site/popup-el-0.5.9/popup.el"))
+;(load (expand-file-name "~/Library/Emacs/site/company-mode-0.10.1/company.el"))
 
-(use-package ensime-mode
-  :ensure nil
-  :load-path "~/Library/Emacs/site/ensime-tng-3.0.15/lisp/"
-  :commands ensime-mode
-  :bind
-  (:map ensime-mode-map
-        ("M-." . ensime-jump-to-definition)
-        ("C-c C-i t" . ensime-type-at-point)
-        ("C-c C-i s" . ensime-symbol-at-point)
-        ("C-c C-r i" . ensime-import-symbol-at-point)))
+;; (use-package ensime-mode
+;;   :ensure nil
+;;   :load-path "~/Library/Emacs/site/ensime-tng-3.0.15/lisp/"
+;;   :commands ensime-mode
+;;   :bind
+;;   (:map ensime-mode-map
+;;         ("M-." . ensime-jump-to-definition)
+;;         ("C-c C-i t" . ensime-type-at-point)
+;;         ("C-c C-i s" . ensime-symbol-at-point)
+;;         ("C-c C-r i" . ensime-import-symbol-at-point)))
 
-(add-hook 'scala-mode-hook #'ensime-mode)
+;; (add-hook 'scala-mode-hook #'ensime-mode)
 
 ;(defconst scala-rigid-indent t)
 
